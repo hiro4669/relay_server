@@ -20,8 +20,6 @@ class Channel:
 
     def get_receivers(self):
         return self._receivers
-    
-    
         
 
 
@@ -50,18 +48,18 @@ class RelayServer:
 
     def _parse(self, conn):
         data = conn.recv(1024)
-        print(len(data))
-        print(type(data))
+        #print(len(data))
+        #print(type(data))
         self._show(data)
         
         nlen = data[1]
-        name = data[2:nlen+2].decode('ascii')
+        name = data[2 : nlen+2].decode('ascii')
 
         print("name={}".format(name))
         _new_channel = False
         _channel = self._contable.get(name)
         if _channel == None:
-            print("create channel")
+            print("Create Channel: {}".format(name))
             _channel = Channel()
             _new_channel = True
             self._contable[name] = _channel
@@ -78,10 +76,8 @@ class RelayServer:
         
 
     def _relay(self, ch_name):
-        print(ch_name)
+        print("CHANNEL: {}".format(ch_name))
         _channel = self._contable[ch_name]        
-        print("YES")
-        
         while True:
             s_conn = _channel.get_sender()
             if s_conn:
@@ -104,7 +100,6 @@ class RelayServer:
             while True:
                 conn, addr = s.accept()
                 new_chan, chan_name = self._parse(conn)
-
                 self._ask_send(conn)
                 if new_chan:
                     print("create thread")
