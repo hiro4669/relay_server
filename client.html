@@ -1,0 +1,36 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    var ws;
+    $(function(){
+      // RaspberryPiへ10005番ポートで接続
+      //var ws = new WebSocket("ws://raspberrypi.local:10005/");
+      //var ws = new WebSocket("ws://localhost:10005/");
+      ws = new WebSocket("ws://localhost:8080/websocket");
+      // サーバーからのメッセージ受信時のイベント
+      ws.onmessage = function(message){
+        $('textarea').val($('textarea').val() + message.data + '\n')
+      }
+      /*
+      setTimeout(function(){
+        // サーバーへメッセージ送信
+        ws.send('from html');
+      }, 6000)
+      */
+    })
+
+    function f() {
+      var input_message = document.getElementById("msg").value;      
+      //alert(input_message)
+      ws.send(input_message)
+
+    }
+  </script>
+</head>
+<body>
+  <textarea style="width:400px;height:100px"></textarea>
+  <input type="text" id="msg"/>
+  <button type="button" onclick="f()">hoge</buttono>
+</body>
+</html>
