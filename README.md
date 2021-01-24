@@ -27,30 +27,30 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 ![class](https://user-images.githubusercontent.com/52157596/104190985-3eac3980-5460-11eb-9c7b-51717357f0e4.png)
 
 ## フィールド
-|フィールド名|初期値|説明|
+|Field Name|Initial Value|Descriptions|
 |-----------|------------|------------|
-|HOST|"127.0.0.1"|ローカルサーバのIPアドレス|
-|PORT|8888|ローカルサーバのポート|
-|CHANNEL|"abc"|チャネル名。チャネル名が同じクライアント同士しかデータのやり取りは行われない。|
-|OK_MESSAGE|"OK"|ヘッダーの認証判定に使用される。|
-|DISCONNECT_SIGN|"DISCONNECT"|後述のreceive()内でサーバ側からの接続解除が検知された場合の戻り値として使用される。|
+|HOST|"127.0.0.1"|IP Address|
+|PORT|8888|Port Number|
+|CHANNEL|"abc"|Channel Name|
+|OK_MESSAGE|"OK"|Used if the header can be accepted or not|
+|DISCONNECT_SIGN|"DISCONNECT"|Used when the server disconnects the connection as a return value from *receive()*|
 |CHAR_CODE|StandardCharsets.US_ASCII|文字コード(ASCII)|
 |BUFFER_SIZE|1024|送受信可能な最大バイト数|
-|clientType|-|enum列挙型であるClientTypeのオブジェクト。ヘッダーに送信する用として、フィールドidを持つ。|
-|socket|-|JavaによるTCP通信を実現する[java.net.Socket](https://docs.oracle.com/javase/jp/8/docs/api/java/net/Socket.html)クラスのインスタンス。|
-|in|-|socketのフィールドである入力ストリーム。受信時にソケットからバイトを読み込むために使用。|
-|out|-|socketのフィールドである出力ストリーム。送信時にソケットにバイトを書き込むために使用。|
+|clientType|-|Client type|
+|socket|-|An instance of Socket class|
+|in|-|java.io.InputStream|
+|out|-|java.io.OutputStream|
 
-## メソッド
-|メソッド|説明|
+## Methods
+|Methods|Descriptions|
 |-----------|------------|
-|createHeader(): byte[]|前述したヘッダーを作成し、バイト配列に変換したものを返す。|
-|connect(): void|ソケットの作成・コネクションの確立・ヘッダーをcreateHeader()で作成し、送信。|
-|disconnect(): void|接続解除。socketをclose。|
-|send(buffer: byte[]): void|バイト配列bufferを送信。|
-|receive(): String|実行と同時に受信待ち状態に。サーバから受信が開始されると1バイトずつ読み取り、バイト配列を作成し、ASCIIでデコードした文字列を返す。サーバからの接続解除が検知された時、フィールドDISCONNECT_SIGNを返す。|
-|initClientType(): void|SenderClient・ReceiverClientでオーバーライド。フィールドclientTypeの初期化を行う。|
-|run(): void|SenderClient・ReceiverClientでオーバーライド。ソケットのコネクション確立後に実行される。前述のアクティビティ図の最後2つのアクションノードが実行される。|
+|createHeader(): byte[]|Creates a header and return it as bytes|
+|connect(): void| Connects to the relay_server|
+|disconnect(): void|Disconnects the connection|
+|send(buffer: byte[]): void|send bytes to the server|
+|receive(): String|Receive data from the server, then create byte array as ASCII. When the server disconnects this connection, this method return DISCONNECT_SIGN field value|
+|initClientType(): void|Initialize Client. This method should be overwritten by sub classes|
+|run(): void|This method is invoked after establishing the connection. This method should be overwritten by sub classes.|
 
 
 ## WebSocket
