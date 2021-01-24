@@ -76,7 +76,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 ```
 
 ### Example
-This project has an example two websocket communicate using WebSocket. wsclient.py is a websocket client that connects to wserver.py and sends "Hello World". client.html is also a websocket client (JS included in this file is actual client) that conencts the wserver.py and receives and show the message sent from "wsclient.py" on the browser.
+This project has an example where two websockets communicate using WebSocket. wsclient.py is a websocket client that connects to wserver.py and sends "Hello World". client.html is also a websocket client (JS included in this file is actual client) that conencts the wserver.py and receives and show the message sent from "wsclient.py" on the browser.
 The followings are demo screens and how to run this example.
 
 ```
