@@ -14,19 +14,19 @@ relay_server waits the header that can be used to decide whether the connection 
 |length of channel name|1byte|ex.)3|
 |channel name|channel len|ex.)"abc"|
 
-## Demo
+### Demo
 The following run a sender and two receivers. Before running then, you should run the relay_server.py
 ![demo](https://user-images.githubusercontent.com/52157596/104133039-6bab0e80-53c4-11eb-8b99-6abc4ff7d79a.gif)
 
 This demo consists of two classes that extend one super class using Java language
 
-## Classes
+### Classes
 This demo consists of one abstract class called *TCPClient*, and two concrete classes called *SenderClient* and *ReceiverClient*. The followings are class diagrams.
 
 
 ![class](https://user-images.githubusercontent.com/52157596/104190985-3eac3980-5460-11eb-9c7b-51717357f0e4.png)
 
-## Fields
+### Fields
 |Field Name|Initial Value|Descriptions|
 |-----------|------------|------------|
 |HOST|"127.0.0.1"|IP Address|
@@ -41,7 +41,7 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 |in|-|java.io.InputStream|
 |out|-|java.io.OutputStream|
 
-## Methods
+### Methods
 |Methods|Descriptions|
 |-----------|------------|
 |createHeader(): byte[]|Creates a header and return it as bytes|
