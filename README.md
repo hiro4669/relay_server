@@ -60,7 +60,7 @@ If you use JavaScript(JS), you cannot use TCP Connection directly, instead you n
 - on_message: This is invoked when the server receives new data
 - on_close: This is invoked when a connection is closed.
 
-```
+```:python
 class WebSocketHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         print("open is called")
