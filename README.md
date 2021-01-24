@@ -54,6 +54,6 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 
 
 ## WebSocket
-If you use JavaScript(JS), you cannot use TCP Connection directly, instead you need to use WebSocket to send/receive data on the fly. wserver.py is the server program that allows us to connect with WebSocket. In wserver.py, it is waiting for two kinds of connections using *Paths* ("/" and "WebSocketClient") that corresponds to *Channel* in TCP Connection examples.
+If you use JavaScript(JS), you cannot use TCP Connection directly, instead you need to use WebSocket to send/receive data on the fly. wserver.py is the server program that allows us to connect with WebSocket. In wserver.py, it is waiting for two kinds of connections using *Paths* ("/" and "/websocket") that corresponds to *Channel* in TCP Connection examples. If you want to add more connections, you can register a new Path and the handler that will handle the new Path(Channel).
 
 
