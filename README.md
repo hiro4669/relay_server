@@ -14,6 +14,12 @@ relay_server waits the header that can be used to decide whether the connection 
 |length of channel name|1byte|ex.)3|
 |channel name|channel len|ex.)"abc"|
 
+## Demo
+# DEMO
+The following run a sender and two receivers. Before running then, you should run the relay_server.py
+
+![demo](https://user-images.githubusercontent.com/52157596/104133039-6bab0e80-53c4-11eb-8b99-6abc4ff7d79a.gif)
+
 ## WebSocket
 
 
