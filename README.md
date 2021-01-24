@@ -8,12 +8,10 @@ Two types of the relay are described as follows:
 
 ### Header
 relay_server waits the header that can be used to decide whether the connection can be a sender or receiver, and identify the channel.
-
-[relay_server](https://github.com/hiro4669/relay_server/)/relay_server.pyでは、コネクション確立直後にヘッダー受信待ち状態になります。サーバは、クライアントからこのヘッダーを受信し、クライアントタイプ(SenderかReceiverか)を識別し、チャネルを決定します。ヘッダー情報の詳細は以下の通りになります。
-|  |型|例|
+|  |Num of Bytes|Example|
 |-----------|------------|------------|
 |client type|1byte|0x1(Sender)｜0x2(Receiver)|
-|length of channel name|4byte|ex.)3|
+|length of channel name|1byte|ex.)3|
 |channel name|channel len|ex.)"abc"|
 
 ## WebSocket
