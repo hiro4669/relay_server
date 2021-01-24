@@ -21,7 +21,37 @@ The following run a sender and two receivers. Before running then, you should ru
 This demo consists of two classes that extend one super class using Java language
 
 ## Classes
-aaa
+This demo consists of one abstract class called *TCPClient*, and two concrete classes called *SenderClient* and *ReceiverClient*. The followings are class diagrams.
+
+
+![class](https://user-images.githubusercontent.com/52157596/104190985-3eac3980-5460-11eb-9c7b-51717357f0e4.png)
+
+## フィールド
+|フィールド名|初期値|説明|
+|-----------|------------|------------|
+|HOST|"127.0.0.1"|ローカルサーバのIPアドレス|
+|PORT|8888|ローカルサーバのポート|
+|CHANNEL|"abc"|チャネル名。チャネル名が同じクライアント同士しかデータのやり取りは行われない。|
+|OK_MESSAGE|"OK"|ヘッダーの認証判定に使用される。|
+|DISCONNECT_SIGN|"DISCONNECT"|後述のreceive()内でサーバ側からの接続解除が検知された場合の戻り値として使用される。|
+|CHAR_CODE|StandardCharsets.US_ASCII|文字コード(ASCII)|
+|BUFFER_SIZE|1024|送受信可能な最大バイト数|
+|clientType|-|enum列挙型であるClientTypeのオブジェクト。ヘッダーに送信する用として、フィールドidを持つ。|
+|socket|-|JavaによるTCP通信を実現する[java.net.Socket](https://docs.oracle.com/javase/jp/8/docs/api/java/net/Socket.html)クラスのインスタンス。|
+|in|-|socketのフィールドである入力ストリーム。受信時にソケットからバイトを読み込むために使用。|
+|out|-|socketのフィールドである出力ストリーム。送信時にソケットにバイトを書き込むために使用。|
+
+## メソッド
+|メソッド|説明|
+|-----------|------------|
+|createHeader(): byte[]|前述したヘッダーを作成し、バイト配列に変換したものを返す。|
+|connect(): void|ソケットの作成・コネクションの確立・ヘッダーをcreateHeader()で作成し、送信。|
+|disconnect(): void|接続解除。socketをclose。|
+|send(buffer: byte[]): void|バイト配列bufferを送信。|
+|receive(): String|実行と同時に受信待ち状態に。サーバから受信が開始されると1バイトずつ読み取り、バイト配列を作成し、ASCIIでデコードした文字列を返す。サーバからの接続解除が検知された時、フィールドDISCONNECT_SIGNを返す。|
+|initClientType(): void|SenderClient・ReceiverClientでオーバーライド。フィールドclientTypeの初期化を行う。|
+|run(): void|SenderClient・ReceiverClientでオーバーライド。ソケットのコネクション確立後に実行される。前述のアクティビティ図の最後2つのアクションノードが実行される。|
+
 
 ## WebSocket
 
