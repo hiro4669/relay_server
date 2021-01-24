@@ -34,8 +34,8 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 |CHANNEL|"abc"|Channel Name|
 |OK_MESSAGE|"OK"|Used if the header can be accepted or not|
 |DISCONNECT_SIGN|"DISCONNECT"|Used when the server disconnects the connection as a return value from *receive()*|
-|CHAR_CODE|StandardCharsets.US_ASCII|文字コード(ASCII)|
-|BUFFER_SIZE|1024|送受信可能な最大バイト数|
+|CHAR_CODE|StandardCharsets.US_ASCII|ASCII code|
+|BUFFER_SIZE|1024|Maxmum length of byte to be sent and received|
 |clientType|-|Client type|
 |socket|-|An instance of Socket class|
 |in|-|java.io.InputStream|
