@@ -1,2 +1,4 @@
 # relay_server
-Relay Server example for gPBL 2021
+This project is for gPBL 2021 for relaying data based on the connections using TCP connections and WebSocket respectively
+
+
