@@ -54,5 +54,6 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 
 
 ## WebSocket
+If you use JavaScript(JS), you cannot use TCP Connection directly, instead you need to use WebSocket to send/receive data on the fly.
 
 
