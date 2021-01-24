@@ -56,8 +56,10 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 ## WebSocket
 If you use JavaScript(JS), you cannot use TCP Connection directly, instead you need to use WebSocket to send/receive data on the fly. wserver.py is the server program that allows us to connect with WebSocket. In wserver.py, it is waiting for two kinds of connections using *Paths* ("/" and "/websocket") that corresponds to *Channel* in TCP Connection examples. If you want to add more connections, you can register a new Path and a handler class that extends *tornado.websocket.WebSocketHandler* and will handle the new Path(Channel). The *tornado.websocket.WebSocketHandler* defines the folowing callback methods that should be overwritten by your handler.
 
-- open
-- close
-- on message
+- open: This is invoked when the server gets a new connection
+- on_message: This is invoked when the server receives new data
+- on_close: This is invoked when a connection is closed.
+
+
 
 
