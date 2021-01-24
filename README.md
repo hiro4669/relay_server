@@ -26,7 +26,7 @@ This demo consists of one abstract class called *TCPClient*, and two concrete cl
 
 ![class](https://user-images.githubusercontent.com/52157596/104190985-3eac3980-5460-11eb-9c7b-51717357f0e4.png)
 
-## フィールド
+## Fields
 |Field Name|Initial Value|Descriptions|
 |-----------|------------|------------|
 |HOST|"127.0.0.1"|IP Address|
