@@ -1,0 +1,4 @@
+#Tue Feb 09 14:35:27 JST 2021
+base.0=/Users/uta/Documents/AndroidStudio/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
