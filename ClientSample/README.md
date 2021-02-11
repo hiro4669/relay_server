@@ -10,7 +10,7 @@ private static class DoTask extends AsyncTask<Integer, String ,String> {
         protected String doInBackground(Integer... integers) {
             try{
                 Log.d("debug","connected");
-                Socket socket = new Socket("IP-adress", 8888);
+                Socket socket = new Socket("IP-address", 8888);
                 PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String line = br.readLine();
