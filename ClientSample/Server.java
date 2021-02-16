@@ -7,32 +7,32 @@ public class Server {
 
   public static void main(String[] args) {
     try{
-      //サーバーのポート番号を指定
+      //Specify the port number of the server
       ServerSocket svSock = new ServerSocket(8888);
 
-      //アクセスを待ち受け
+      //Wait for access
       Socket sock = svSock.accept();
 
-      //受信ストリームの取得(DataInputStreamでラップ)
+      //Get the Input stream (wrapped in DataInputStream)
       DataInputStream in = new DataInputStream(sock.getInputStream());
 
-      //int型データを受信
+      //Receive int type data
       int intData = in.readInt();
 
-      //String型データを受信
+      //Receive String type data
       String strData = in.readUTF();
 
-      //double型データを受信
+      //Receive double type data
       double dblData = in.readDouble();
 
       System.out.println("「"+intData+"」received.");
       System.out.println("「"+strData+"」received.");
       System.out.println("「"+dblData+"」received.");
 
-      //受信ストリームの終了
+      //End of Input stream
       in.close();
 
-      //サーバー終了
+      //Server Termination
       svSock.close();
 
     }catch(IOException e){
