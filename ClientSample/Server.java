@@ -8,7 +8,7 @@ public class Server {
   public static void main(String[] args) {
     try{
       //サーバーのポート番号を指定
-      ServerSocket svSock = new ServerSocket(8889);
+      ServerSocket svSock = new ServerSocket(8888);
 
       //アクセスを待ち受け
       Socket sock = svSock.accept();
@@ -25,10 +25,9 @@ public class Server {
       //double型データを受信
       double dblData = in.readDouble();
 
-      //受信データの表示
-      System.out.println("「"+intData+"」を受信しました。");
-      System.out.println("「"+strData+"」を受信しました。");
-      System.out.println("「"+dblData+"」を受信しました。");
+      System.out.println("「"+intData+"」received.");
+      System.out.println("「"+strData+"」received.");
+      System.out.println("「"+dblData+"」received.");
 
       //受信ストリームの終了
       in.close();
