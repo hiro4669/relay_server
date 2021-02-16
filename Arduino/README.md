@@ -57,6 +57,16 @@ If you are using an ESP8266 board,
 If you are using an ESP32 board,
 `ESP32 Dev Module`
 
+And configure the board settings according to the table below.
+
+|    |    |
+| ---- | ---- |
+|  Flash Mode  |  QIO  |
+|  Flash Frequency  |  40MHz  |
+|  CPU Frequency  |  80MHz(Wifi/BT)  |
+|  Flash Size  |  2MB(16Mb)  |
+|  Upload Speed  |  115200  |
+
 ### Select the Port
 Finally, select and configure the port.
 Go to **Tools> Port** as shown in the following figure
