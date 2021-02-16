@@ -78,7 +78,7 @@ private static class DoTask extends AsyncTask<Integer, String ,String> {
 </manifest>
 
  ```
-# Run server
+# Run server(java)
  ```bash
 import java.io.IOException;
 import java.io.DataInputStream;
