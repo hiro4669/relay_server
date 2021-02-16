@@ -10,7 +10,7 @@ private static class DoTask extends AsyncTask<Integer, String ,String> {
         protected String doInBackground(Integer... integers) {
             try{
                 Log.d("debug","connected");
-                Socket socket = new Socket("192.168.3.11", 8889);
+                Socket socket = new Socket("IP-Address", 8888);
                 /*PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String line = br.readLine();
@@ -90,7 +90,7 @@ public class Server {
   public static void main(String[] args) {
     try{
       //サーバーのポート番号を指定
-      ServerSocket svSock = new ServerSocket(8889);
+      ServerSocket svSock = new ServerSocket(8888);
 
       //アクセスを待ち受け
       Socket sock = svSock.accept();
