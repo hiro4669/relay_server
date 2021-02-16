@@ -38,13 +38,38 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Integer... integers) {
             try{
                 Log.d("debug","connected");
-                Socket socket = new Socket("IP-address", 8888);
-                PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
+                Socket socket = new Socket("192.168.3.11", 8889);
+                /*PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String line = br.readLine();
                 pw.println(line + "received!");
                 br.close();
                 pw.close();
+                socket.close();*/
+
+                //送信ストリームの取得(DataOutputStreamでラップ)
+                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+
+                //送信データ
+                int intData = 100;
+                String strData = "String";
+                double dblData = 3.14;
+
+                //int型送信
+                out.writeInt(intData);
+
+                //String型送信
+                out.writeUTF(strData);
+
+                //double型送信
+                out.writeDouble(dblData);
+
+                System.out.println("Send Prototype");
+
+                //送信ストリームを表示
+                out.close();
+
+                //終了
                 socket.close();
                 return "Connected!!";
             }catch (Exception e){
