@@ -48,29 +48,29 @@ public class MainActivity extends AppCompatActivity {
                 pw.close();
                 socket.close();*/
 
-                //送信ストリームの取得(DataOutputStreamでラップ)
+                //Get the Output stream (wrapped in DataOutputStream)
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-                //送信データ
+                //Sending data
                 int intData = 100;
                 String strData = "String";
                 double dblData = 3.14;
 
-                //int型送信
+                //Send int type
                 out.writeInt(intData);
 
-                //String型送信
+                //Send String type
                 out.writeUTF(strData);
 
-                //double型送信
+                //Send double type
                 out.writeDouble(dblData);
 
                 System.out.println("Send Prototype");
 
-                //送信ストリームを表示
+                //Show Output stream
                 out.close();
 
-                //終了
+                //close
                 socket.close();
                 return "Connected!!";
             }catch (Exception e){
