@@ -19,29 +19,29 @@ private static class DoTask extends AsyncTask<Integer, String ,String> {
                 pw.close();
                 socket.close();*/
 
-                //送信ストリームの取得(DataOutputStreamでラップ)
+                //Get the Output stream (wrapped in DataOutputStream)
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-                //送信データ
+                //Sending data
                 int intData = 100;
                 String strData = "String";
                 double dblData = 3.14;
 
-                //int型送信
+                //Send int type
                 out.writeInt(intData);
 
-                //String型送信
+                //Send String type
                 out.writeUTF(strData);
 
-                //double型送信
+                //Send double type
                 out.writeDouble(dblData);
 
                 System.out.println("Send Prototype");
 
-                //送信ストリームを表示
+                //Show Output stream
                 out.close();
 
-                //終了
+                //close
                 socket.close();
                 return "Connected!!";
             }catch (Exception e){
@@ -89,35 +89,34 @@ public class Server {
 
   public static void main(String[] args) {
     try{
-      //サーバーのポート番号を指定
+      //Specify the port number of the server
       ServerSocket svSock = new ServerSocket(8888);
 
-      //アクセスを待ち受け
+      //Wait for access
       Socket sock = svSock.accept();
 
-      //受信ストリームの取得(DataInputStreamでラップ)
+      //Get the Input stream (wrapped in DataInputStream)
       DataInputStream in = new DataInputStream(sock.getInputStream());
 
-      //int型データを受信
+      //Receive int type data
       int intData = in.readInt();
 
-      //String型データを受信
+      //Receive String type data
       String strData = in.readUTF();
 
-      //double型データを受信
+      //Receive double type data
       double dblData = in.readDouble();
 
-      //受信データの表示
       System.out.println("「"+intData+"」received.");
       System.out.println("「"+strData+"」received.");
       System.out.println("「"+dblData+"」received.");
 
-      //受信ストリームの終了
+      //End of Input stream
       in.close();
 
-      //サーバー終了
+      //Server Termination
       svSock.close();
-
+      
     }catch(IOException e){
       e.printStackTrace();
     }
