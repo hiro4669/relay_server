@@ -1,8 +1,11 @@
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
+import signal
 
 cl = []
+is_closing=False
+
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -26,6 +29,16 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
         if self in cl:
             cl.remove(self)
 
+def signal_handler(signum,frame):
+        global is_closing
+        is_closing=True
+
+def try_exit():
+        global is_closing
+        if is_closing:
+            # clean up here
+            tornado.ioloop.IOLoop.instance().stop()
+
 
 application = tornado.web.Application([
     (r"/", MainHandler),
@@ -33,5 +46,8 @@ application = tornado.web.Application([
 ])
 if __name__ == "__main__":
     print("main")
-    application.listen(8080)
-    tornado.ioloop.IOLoop.current().start()
+    signal.signal(signal.SIGINT,signal_handler)
+    application.listen(8888)//port number
+    tornado.ioloop.PeriodicCallback(try_exit,100).start()
+    tornado.ioloop.IOLoop.instance().start()
+    

@@ -5,7 +5,8 @@ from websocket import create_connection
 
 
 if __name__ == "__main__":
-    ws = create_connection("ws://localhost:8080/websocket")
+    //Enter IP address & port number
+    ws = create_connection("ws://180.235.234.95:8888/websocket")
     message = "Hello World"
     print("send {}".format(message))
     ws.send(message)
