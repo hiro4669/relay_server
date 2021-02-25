@@ -47,7 +47,7 @@ application = tornado.web.Application([
 if __name__ == "__main__":
     print("main")
     signal.signal(signal.SIGINT,signal_handler)
-    application.listen(8888)//port number
+    application.listen(8888)#port number
     tornado.ioloop.PeriodicCallback(try_exit,100).start()
     tornado.ioloop.IOLoop.instance().start()
     
