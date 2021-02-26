@@ -10,7 +10,7 @@ def show_databases():
         port='3306',
         user='', # Your team's user name
         password='', # Your team's password
-        database=''
+        database='' # Name of the database you are using.
     )
 
     print('connected?: {}'.format(connector.is_connected()))
