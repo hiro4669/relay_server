@@ -15,12 +15,12 @@ def show_databases():
 
     print('connected?: {}'.format(connector.is_connected()))
     cursor = connector.cursor()
-    show_databases_sql = "show databases"
+    show_databases_sql = 'show databases'
     cursor.execute(show_databases_sql)
 
     print('{}:'.format(show_databases_sql))
-    for (show_databases_sql) in cursor:
-        print(show_databases_sql[0])
+    for _cursor in cursor:
+        print(_cursor[0])
 
 
 if __name__ == '__main__':
