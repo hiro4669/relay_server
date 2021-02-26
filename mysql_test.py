@@ -1,13 +1,17 @@
-import MySQLdb
+import mysql.connector as mydb
 
 
 def show_databases():
-    connector = MySQLdb.connect(
-            user='root',
-            passwd='',
-            host='localhost',
-            db='')
+    # コネクションの作成
+    connector = mydb.connect(
+        host='localhost',
+        port='3306',
+        user='root',
+        password='',
+        database=''
+    )
 
+    print('connected??: {}'.format(connector.is_connected()))
     cursor = connector.cursor()
     show_databases_sql = "show databases"
     cursor.execute(show_databases_sql)
