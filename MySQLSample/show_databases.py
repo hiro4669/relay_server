@@ -8,8 +8,8 @@ def show_databases():
     connector = mydb.connect(
         host='localhost',
         port='3306',
-        user='', # Your team's user name
-        password='', # Your team's password
+        user='', # Usernames of the MySQL user on your team
+        password='', # Password of the MySQL user on your team
         database='' # Name of the database you are using.
     )
 
